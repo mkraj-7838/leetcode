@@ -13,7 +13,7 @@ public:
                 int j = i + 1;
                 int k = l - 1;
                 while (j < k) {
-                    long long sum = nums[i] + nums[j] + nums[k] + nums[l];
+                    long long sum = (long long)nums[i] + (long long)nums[j] + (long long)nums[k] + (long long)nums[l];
                     if (sum == (long long)target) {
                         ans.push_back({nums[i], nums[j], nums[k], nums[l]});
                         j++;
