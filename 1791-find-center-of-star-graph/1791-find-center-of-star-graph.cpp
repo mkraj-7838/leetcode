@@ -8,7 +8,7 @@ public:
                 connections[edges[i][j]]++;
             }
         }
-        for (int i = 1; i < edges.size(); i++) {
+        for (int i = 1; i <= n ; i++) {
             if (connections[i] == n - 1)
                 return i;
         }
