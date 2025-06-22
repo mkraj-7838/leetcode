@@ -1,20 +1,24 @@
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<vector<int>> v;
-        
-        v.push_back(vector<int>());
-
-        for(int num : nums)
-        {
-            int size = v.size();
-            for(int i=0;i<size;i++)
-            {
-                vector<int> temp = v[i];
-                temp.push_back(num);
-                v.push_back(temp);
-            }
+    void solve(vector<vector<int>>& ans, vector<int>& ip, vector<int>& op) {
+        if (ip.size() == 0) {
+            ans.push_back(op);
+            return;
         }
-        return v;
+
+        vector<int> op1 = op;
+        vector<int> op2 = op;
+        op2.push_back(ip[0]);
+
+        vector<int> new_ip(ip.begin() + 1, ip.end());
+
+        solve(ans, new_ip, op1); // exclude
+        solve(ans, new_ip, op2); // include
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> op;
+        solve(ans, nums, op);
+        return ans;
     }
 };
